@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+android {
+    signingConfigs {
+        config {
+        }
+    }
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+    defaultConfig {
+        applicationId "com.foxbard.pydev.joketeller"
+        minSdkVersion 19
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+        free {
+            applicationId "com.foxbard.pydev.joketeller.free"
+        }
+        paid {
+            applicationId "com.foxbard.pydev.joketeller.paid"
+        }
+    }
+}
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile project(':subactivity')
+    compile project(':jokeslibrary')
+    androidTestCompile 'com.android.support:support-annotations:24.1.1'
+    compile project(path: ':backend', configuration: 'android-endpoints')
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2'
+    //    androidTestCompile 'com.android.support.test.espresso:espresso-web:2.2'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.android.support:support-v4:24.1.1'
+}
+
+
+
+
+
+
+
+
+
+
+
+

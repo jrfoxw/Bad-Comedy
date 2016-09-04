@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JokeTeller</string>
+    <string name="get_joke_button">get a joke</string>
+</resources>
